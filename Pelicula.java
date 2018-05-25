@@ -10,6 +10,7 @@ public class Pelicula extends ProductoMultimedia
     private int duracionMin;
     private int calidad;
     private static final int CALIDAD_HD = 1080;
+    private static final int AÑO_REFERENCIA = 2000;
 
     /**
      * Constructor de la clase Pelicula
@@ -25,7 +26,7 @@ public class Pelicula extends ProductoMultimedia
         this.duracionMin = duracionMin;
         this.calidad = calidad;
     }
-    
+
     /**
      * Devuelve la duracion de la pelicula
      *
@@ -35,7 +36,7 @@ public class Pelicula extends ProductoMultimedia
     {
         return duracionMin;
     }
-    
+
     /**
      * Devuelve la calidad de la pelicula
      *
@@ -46,6 +47,28 @@ public class Pelicula extends ProductoMultimedia
         String aDevolver = "HD";
         if (calidad >= CALIDAD_HD){
             aDevolver = "FullHD";
+        }
+        return aDevolver;
+    }
+
+    /**
+     * Devuelve el precio de la pelicula
+     *
+     * @return    El precio de la pelicula
+     */
+    public double getPrecio()
+    {
+        double aDevolver = 0;
+        switch(getCalidad()){
+            case "HD":
+            aDevolver = 5;
+            break;
+            case "FullHD":
+            aDevolver = 2;
+            break;
+        }
+        if (getAno() < AÑO_REFERENCIA){
+            aDevolver = aDevolver/2;
         }
         return aDevolver;
     }

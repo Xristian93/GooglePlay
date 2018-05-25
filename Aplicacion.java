@@ -7,9 +7,9 @@
  */
 public class Aplicacion extends Producto
 {
-    private String nombre;
     private double espacioMemoria;
     private Categoria categoria;
+    private static final double PRECIO_INICIAL = 0.99;
 
     /**
      * Constructor de la clase Aplicacion
@@ -20,19 +20,9 @@ public class Aplicacion extends Producto
      */
     public Aplicacion(String nombre, double espacioMemoria, Categoria categoria)
     {
-        this.nombre = nombre;
+        super(nombre);
         this.espacioMemoria = espacioMemoria;
         this.categoria = categoria;
-    }
-
-    /**
-     * Devuelve el nombre de la Aplicacion
-     * 
-     * @return    El nombre de la Aplicacion
-     */
-    public String getNombre()
-    {
-        return nombre;
     }
     
     /**
@@ -53,5 +43,43 @@ public class Aplicacion extends Producto
     public String getCategoria()
     {
         return categoria.getNombreCategoria();
+    }
+    
+    /**
+     * Devuelve el precio de la aplicacion
+     *
+     * @return    El precio de la aplicacion
+     */
+    @Override
+    public double getPrecio()
+    {
+        double aDevolver = PRECIO_INICIAL;
+        if (getNumVecesVendido() >= 2){
+            switch(getCategoria()){
+                case "Juegos":
+                aDevolver = 5;
+                break;
+                case "Comunicaciones":
+                aDevolver = 2;
+                break;
+                case "Productividad":
+                aDevolver = 10;
+                break;
+                case "Multimedia":
+                aDevolver = 2;
+                break;
+            }
+        }
+        return aDevolver;
+    }
+    
+    /**
+     * Devuelve el nombre de la aplicacion
+     *
+     * @return    El nombre de la aplicacion
+     */
+    public String getNombre()
+    {
+        return getIdentificador();
     }
 }

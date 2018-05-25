@@ -7,7 +7,6 @@
  */
 public abstract class ProductoMultimedia extends Producto
 {
-    private String titulo;
     private int anoCreacion;
 
     /**
@@ -15,18 +14,8 @@ public abstract class ProductoMultimedia extends Producto
      */
     public ProductoMultimedia(String titulo, int anoCreacion)
     {
-        this.titulo = titulo;
+        super(titulo);
         this.anoCreacion = anoCreacion;
-    }
-
-    /**
-     * Devuelve el titulo del producto multimedia
-     *
-     * @return    El titulo del producto multimedia
-     */
-    public String getTitulo()
-    {
-        return titulo;
     }
     
     /**
@@ -38,4 +27,21 @@ public abstract class ProductoMultimedia extends Producto
     {
         return anoCreacion;
     }
+    
+    /**
+     * Devuelve el titulo del producto multimedia
+     *
+     * @return    El titulo del producto multimedia
+     */
+    public String getTitulo()
+    {
+        return getIdentificador();
+    }
+    
+    /**
+     * Devuelve el precio del producto
+     *
+     * @return    El precio del producto
+     */
+    public abstract double getPrecio();
 }

@@ -9,6 +9,8 @@ public class Libro extends ProductoMultimedia
 {
     private int numPaginas;
     private boolean ficcion;
+    private static final int AÑO_REFERENCIA = 100;
+    private static final int DIVISOR = 100;
 
     /**
      * Constructor de la clase Libro
@@ -43,5 +45,16 @@ public class Libro extends ProductoMultimedia
     public boolean getFiccion()
     {
         return ficcion;
+    }
+    
+    /**
+     * Devuelve el precio del libro
+     *
+     * @return    El precio del Libro
+     */
+    public double getPrecio()
+    {
+        double aDevolver = numPaginas/DIVISOR * (AÑO_REFERENCIA - getAno());
+        return aDevolver;
     }
 }

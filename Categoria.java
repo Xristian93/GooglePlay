@@ -7,7 +7,7 @@
  */
 public enum Categoria
 {
-    JUEGOS("Juegos"), 
+    JUEGOS("Juegos"),
 
     COMUNICACIONES("Comunicaciones"), 
 

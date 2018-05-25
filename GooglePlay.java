@@ -29,7 +29,7 @@ public class GooglePlay
     {
         usuarios.add(usuario);
     }
-    
+
     /**
      * Este metodo añade un producto 
      *
@@ -39,7 +39,7 @@ public class GooglePlay
     {
         productos.add(producto);
     }
-    
+
     /**
      * Devuelve el numero de usuarios
      * 
@@ -49,7 +49,7 @@ public class GooglePlay
     {
         return usuarios.size();
     }
-    
+
     /**
      * Devuelve el numero de productos
      * 
@@ -58,5 +58,42 @@ public class GooglePlay
     public int getNumeroProductos()
     {
         return productos.size();
+    }
+
+    /**
+     * Efectua una compra
+     * 
+     * @return    El numero de productos
+     */
+    public double comprar(String correoElectronico, String identificador)
+    {
+        double aDevolver = -1;
+        boolean buscando = true;
+        boolean usuarioEncontrado = false;
+        boolean productoEncontrado = false;
+        Producto producto = null;
+        int cont = 0;
+        while (buscando && cont < usuarios.size()){
+            if (usuarios.get(cont).getNombreCuenta().equals(correoElectronico)){
+                usuarioEncontrado = true;
+                buscando = false;
+            }
+            cont++;
+        }
+        buscando = true;
+        cont = 0;
+        while (buscando && cont < productos.size()){
+            if (productos.get(cont).getIdentificador().equals(identificador)){
+                productoEncontrado = true;
+                producto = productos.get(cont);
+                buscando = false;
+            }
+            cont++;
+        }
+        if (usuarioEncontrado && productoEncontrado){
+            aDevolver = producto.getPrecio();
+            producto.incrementaNumVecesVendido();
+        }
+        return aDevolver;
     }
 }
